@@ -1,11 +1,12 @@
 package com.example.medicinehalflife;
-
+//dimensionless computation of concentration
 public class TakenDrug {
     //Drug drug;
     String Name;
     double[] concentrations;
     int halflife;
     double maxlevel;
+
 
     public TakenDrug(int hl){
         this.halflife = hl;
@@ -15,7 +16,7 @@ public class TakenDrug {
         this.halflife = d.HalflifeMinutes;
         this.Name = d.Name;
     }
-    //
+    //Simulates concentration over time.  Requires halflife
     public void SimulateSingleDose(int initialDose){
         concentrations = new double[60*24];  //minute-by-minute for 24 hours
         concentrations[0]= initialDose;
