@@ -9,6 +9,7 @@
 
     <TextView
         android:id="@+id/drug_name_label"
+        style="@style/TextAppearance.AppCompat.Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/drug_name_label"
@@ -24,6 +25,7 @@
 
     <TextView
         android:id="@+id/half_life_label"
+        style="@style/TextAppearance.AppCompat.Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -31,15 +33,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/drug_name_spinner" />
 
-    <TextView
-        android:id="@+id/drug_half_life_textview"
+    <EditText
+        android:id="@+id/drug_half_life_edittext"
+        style="@style/TextAppearance.AppCompat.Subhead"
         android:layout_width="0dp"
+        android:enabled="false"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         app:layout_constraintBaseline_toBaselineOf="@id/half_life_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/half_life_label" />
+
+    <CheckBox
+        android:layout_marginTop="16dp"
+        android:id="@+id/custom_halflife_checkbox"
+        app:layout_constraintTop_toBottomOf="@id/half_life_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        app:layout_constraintStart_toEndOf="@id/custom_halflife_checkbox"
+        app:layout_constraintBaseline_toBaselineOf="@id/custom_halflife_checkbox"
+        android:text="@string/custom_drug_textview_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/simulate_graph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/graph"
+        android:onClick="graph_timeline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

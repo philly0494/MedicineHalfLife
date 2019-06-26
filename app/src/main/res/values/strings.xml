@@ -2,6 +2,8 @@
     <string name="app_name">MedicineHalfLife</string>
     <string name="drug_name_label">Drug Name:</string>
     <string name="half_life_label">Half Life:</string>
+    <string name="graph">Graph</string>
+    <string name="custom_drug_textview_label">Custom Drug, input Half-Life</string>
 
     <string-array name="drug_names">
         <item>Acetaminophen</item>

@@ -1,10 +1,7 @@
 package com.example.medicinehalflife;
 
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -12,11 +9,16 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Spinner spinner;
+    private CheckBox checkBox;
+    private EditText half_life_input;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        half_life_input = findViewById(R.id.drug_half_life_edittext);
+
 
         TakenDrug td = new TakenDrug(13);
         td.SimulateSingleDose(1000);
@@ -32,6 +34,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (spinner != null) {
             spinner.setAdapter(adapter);
         }
+        checkBox = findViewById(R.id.custom_halflife_checkbox);
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // Enable the user to input their own half-life if the box is checked
+                half_life_input.setEnabled(isChecked);
+                spinner.setEnabled(!isChecked);
+            }
+        });
     }
 
     @Override
@@ -51,13 +62,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             default:
                 break;
         }
-        TextView textview = findViewById(R.id.drug_half_life_textview);
-        textview.setText(String.format("%s", halflife));
+        half_life_input.setText(String.format("%s minutes", halflife));
 
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    public void graph_timeline(View view) {
     }
 }
