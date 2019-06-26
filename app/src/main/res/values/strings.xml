@@ -4,6 +4,8 @@
     <string name="half_life_label">Half Life:</string>
     <string name="graph">Graph</string>
     <string name="custom_drug_textview_label">Custom Drug, input Half-Life</string>
+    <string name="repeated_dose">Repeated Dose</string>
+    <string name="single_dose">Single Dose</string>
 
     <string-array name="drug_names">
         <item>Acetaminophen</item>

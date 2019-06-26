@@ -37,34 +37,54 @@
         android:id="@+id/drug_half_life_edittext"
         style="@style/TextAppearance.AppCompat.Subhead"
         android:layout_width="0dp"
-        android:enabled="false"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
+        android:enabled="false"
         app:layout_constraintBaseline_toBaselineOf="@id/half_life_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/half_life_label" />
 
+    <RadioGroup
+        android:id="@+id/dosage_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/drug_half_life_edittext">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/single_dose" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/repeated_dose" />
+
+    </RadioGroup>
+
     <CheckBox
-        android:layout_marginTop="16dp"
         android:id="@+id/custom_halflife_checkbox"
-        app:layout_constraintTop_toBottomOf="@id/half_life_label"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/dosage_radio_group" />
 
     <TextView
-        app:layout_constraintStart_toEndOf="@id/custom_halflife_checkbox"
-        app:layout_constraintBaseline_toBaselineOf="@id/custom_halflife_checkbox"
-        android:text="@string/custom_drug_textview_label"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/custom_drug_textview_label"
+        app:layout_constraintBaseline_toBaselineOf="@id/custom_halflife_checkbox"
+        app:layout_constraintStart_toEndOf="@id/custom_halflife_checkbox" />
 
     <Button
         android:id="@+id/simulate_graph"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/graph"
         android:onClick="graph_timeline"
+        android:text="@string/graph"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
