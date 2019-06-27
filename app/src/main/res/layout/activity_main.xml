@@ -42,13 +42,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:enabled="false"
+        android:inputType="number"
         app:layout_constraintBaseline_toBaselineOf="@id/half_life_label"
         app:layout_constraintEnd_toStartOf="@id/halflife_unit"
         app:layout_constraintStart_toEndOf="@id/half_life_label" />
 
     <Spinner
         android:id="@+id/halflife_unit"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/dosage_radio_group"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,8 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/drug_half_life_edittext"
-        >
+        app:layout_constraintTop_toBottomOf="@id/drug_half_life_edittext">
 
         <RadioButton
             android:id="@+id/single_dose_radio"
@@ -96,52 +96,54 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:hint="@string/init_dosage"
+        android:inputType="number"
         app:layout_constraintBaseline_toBaselineOf="@id/dosage_label_textview"
         app:layout_constraintEnd_toStartOf="@id/dosage_unit_spinner"
         app:layout_constraintStart_toEndOf="@id/dosage_label_textview" />
 
     <Spinner
         android:id="@+id/dosage_unit_spinner"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/dosage_edittext"
         app:layout_constraintTop_toBottomOf="@id/dosage_radio_group" />
 
     <TextView
-        tools:visibility="visible"
-        android:visibility="gone"
         android:id="@+id/every_label"
         style="@style/TextAppearance.AppCompat.Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/every_label"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/custom_halflife_checkbox"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dosage_label_textview" />
+        app:layout_constraintTop_toBottomOf="@id/dosage_label_textview"
+        tools:visibility="visible" />
 
     <EditText
-        tools:visibility="visible"
-        android:visibility="gone"
         android:id="@+id/frequency_edit_text"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:inputType="number"
+        android:visibility="gone"
         app:layout_constraintBaseline_toBaselineOf="@id/every_label"
         app:layout_constraintEnd_toStartOf="@id/frequency_unit_label"
         app:layout_constraintStart_toEndOf="@id/every_label"
-        tools:text="120" />
+        tools:text="120"
+        tools:visibility="visible" />
 
     <TextView
-        tools:visibility="visible"
-        android:visibility="gone"
         android:id="@+id/frequency_unit_label"
         style="@style/TextAppearance.AppCompat.Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBaseline_toBaselineOf="@id/frequency_edit_text"
         app:layout_constraintStart_toEndOf="@id/frequency_edit_text"
-        tools:text="mins" />
+        tools:text="mins"
+        tools:visibility="visible" />
 
     <CheckBox
         android:id="@+id/custom_halflife_checkbox"
