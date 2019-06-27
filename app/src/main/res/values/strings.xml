@@ -6,10 +6,29 @@
     <string name="custom_drug_textview_label">Custom Drug, input Half-Life</string>
     <string name="repeated_dose">Repeated Dose</string>
     <string name="single_dose">Single Dose</string>
+    <string name="dosage_textview_label">Dosage:</string>
+    <string name="init_dosage">500</string>
+    <string name="every_label">Every</string>
 
     <string-array name="drug_names">
         <item>Acetaminophen</item>
         <item>Dextromethorphan</item>
+    </string-array>
+
+    <string-array name="drug_half_life_values">
+        <item>180</item>
+        <item>240</item>
+    </string-array>
+
+    <string-array name="dosage_units">
+        <item>mg</item>
+        <item>g</item>
+        <item>μg</item>
+    </string-array>
+
+    <string-array name="half_life_units">
+        <item>mins</item>
+        <item>hrs</item>
     </string-array>
 
 </resources>
