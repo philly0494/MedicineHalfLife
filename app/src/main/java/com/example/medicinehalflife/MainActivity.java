@@ -2,6 +2,7 @@ package com.example.medicinehalflife;
 
 import android.view.View;
 import android.widget.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -29,12 +30,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         single_dose_button.setChecked(true);
 
         dosage_spinner = findViewById(R.id.dosage_unit_spinner);
-        ArrayAdapter<CharSequence> unit_adapter = ArrayAdapter.createFromResource(this,R.array.dosage_units, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> unit_adapter = ArrayAdapter.createFromResource(
+                this, R.array.dosage_units, android.R.layout.simple_spinner_item);
         unit_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dosage_spinner.setAdapter(unit_adapter);
 
-        half_life_unit_spinner= findViewById(R.id.halflife_unit);
-        ArrayAdapter<CharSequence> half_life_unit_adapter = ArrayAdapter.createFromResource(this,R.array.half_life_units, android.R.layout.simple_spinner_item);
+        half_life_unit_spinner = findViewById(R.id.halflife_unit);
+        ArrayAdapter<CharSequence> half_life_unit_adapter = ArrayAdapter.createFromResource(
+                this, R.array.half_life_units, android.R.layout.simple_spinner_item);
         half_life_unit_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         half_life_unit_spinner.setAdapter(half_life_unit_adapter);
         half_life_unit_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 TextView everyLabel = findViewById(R.id.every_label);
                 EditText frequencyEdit = findViewById(R.id.frequency_edit_text);
                 TextView frequencyUnit = findViewById(R.id.frequency_unit_label);
-                if (i==R.id.single_dose_radio){
+                if (i == R.id.single_dose_radio) {
                     everyLabel.setVisibility(View.GONE);
                     frequencyEdit.setVisibility(View.GONE);
                     frequencyUnit.setVisibility(View.GONE);
@@ -83,7 +86,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (drug_name_spinner != null) {
             drug_name_spinner.setOnItemSelectedListener(this);
         }
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.drug_names, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this, R.array.drug_names, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         if (drug_name_spinner != null) {
             drug_name_spinner.setAdapter(adapter);
@@ -103,11 +107,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String drugName = parent.getItemAtPosition(position).toString();
-        double halflife = 0;
+        int halflife = 0;
         //ArrayList<String> drugNames = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.drug_names)));
         //ArrayList<String> drugHLs = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.drug_half_life_values)));
-        String[] drugHLs=getResources().getStringArray(R.array.drug_half_life_values);
-        halflife = Double.parseDouble(drugHLs[position]);
+        String[] drugHLs = getResources().getStringArray(R.array.drug_half_life_values);
+        halflife = Integer.parseInt(drugHLs[position]);
         half_life_input.setText(String.format("%s", halflife));
 
     }
