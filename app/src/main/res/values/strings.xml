@@ -31,4 +31,8 @@
         <item>hrs</item>
     </string-array>
 
+    <string name="action_graph">Graph</string>
+    <string name="action_settings">Settings</string>
+
+
 </resources>
