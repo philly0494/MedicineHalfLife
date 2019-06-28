@@ -156,10 +156,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             final RadioButton singleDoseRadio = findViewById(R.id.single_dose_radio);
             TakenDrug simulation = new TakenDrug(hl);
-            if (singleDoseRadio.isChecked()){
+            if (singleDoseRadio.isChecked()) {
                 simulation.SimulateSingleDose(initialDose);
-            }
-             else {
+            } else {
                 final EditText freqEditText = findViewById(R.id.frequency_edit_text);
                 freq = Integer.parseInt(freqEditText.getText().toString());
                 simulation.SimulateRepeatedDose(initialDose, initialDose, freq);
@@ -170,33 +169,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             int webview_height = Integer.parseInt(getResources().getString(R.string.webview_height));
             int webview_width = Integer.parseInt(getResources().getString(R.string.webview_width));
 
-           String doseUnit = dosage_spinner.getSelectedItem().toString();
-           String halflifeUnit = half_life_unit_spinner.getSelectedItem().toString();
+            String doseUnit = dosage_spinner.getSelectedItem().toString();
+            String halflifeUnit = half_life_unit_spinner.getSelectedItem().toString();
 
-            String content = "<html> <head> <script type=\"text/javascript\" src=\"https://www.gstatic.com/charts/loader.js\"></script> <script type=\"text/javascript\">"
-                    + "google.charts.load('current', {'packages':['corechart']});"
-                    + "google.charts.setOnLoadCallback(drawChart);"
-                    + "function drawChart() { var data = google.visualization.arrayToDataTable("
-                    + "[ ['Time', 'Concentration'],"
-                    + GenerateDataTable(simulation)
-                    //+"[0, 100], [1, 80], [2, 65], [3, 55]"
-                    + "]); var options = { "
-                    + "title: 'Medicine Halflife Simulation'"
-                    + ", vAxis: {title: 'Concentration ("
-                    + doseUnit
-                    + ")'}, hAxis: {title: 'Time ("
-                    + halflifeUnit
-                    + ")'}, curveType: 'function', legend: { position: 'bottom' } }; var chart = new google.visualization.LineChart(document.getElementById('curve_chart')); chart.draw(data, options); } </script> </head> <body> <div id=\"curve_chart\" style=\"width: "
-                    + webview_width
-                    + "px; height: "
-                    + webview_height
-                    + "px\"></div> </body> </html>";
+            // Moved the content to it's own class
+            HtmlContentBuilder builder = new HtmlContentBuilder();
+            builder.setDims(webview_height, webview_width);
+            builder.setDosageUnit(doseUnit);
+            builder.setHalfLifeUnit(halflifeUnit);
+            builder.setSimulation(simulation);
+            String builtContent = builder.build();
+
             WebSettings webSettings = webview.getSettings();
             webSettings.setJavaScriptEnabled(true);
             webview.requestFocusFromTouch();
-            webview.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
-        }
-        catch (NumberFormatException e){
+            webview.loadDataWithBaseURL("file:///android_asset/", builtContent, "text/html", "utf-8", null);
+        } catch (NumberFormatException e) {
             e.printStackTrace();
             Snackbar.make(findViewById(R.id.coordinatorLayout_main), "Please give all information", Snackbar.LENGTH_LONG)
                     .show();
@@ -207,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 getSystemService(Context.INPUT_METHOD_SERVICE);
 
         // Hides the keyboard, but do not override "force keyboard" flags
-        if (inputManager != null ) {
+        if (inputManager != null) {
             inputManager.hideSoftInputFromWindow(findViewById(R.id.action_graph).getWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS);
         }
