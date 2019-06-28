@@ -1,8 +1,12 @@
 package com.example.medicinehalflife;
 
+import android.content.Context;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 
-import org.w3c.dom.Text;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -126,7 +130,87 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    public void graph_timeline(View view) {
+    private String GenerateDataTable(TakenDrug simulation) {
+        String ret = "";
+        for (int i = 0; i < simulation.concentrations.length; i++) {
+            ret += "[" + i + "," + simulation.concentrations[i] + "]";
+            if (i < simulation.concentrations.length - 1) {
+                ret += ",";
+            }
+        }
+        return ret;
+    }
+
+    public void graph_timeline() {
+
+        try {
+            int hl;
+            int initialDose;
+            int freq;
+
+            final EditText hfEditText = findViewById(R.id.drug_half_life_edittext);
+
+            hl = Integer.parseInt(hfEditText.getText().toString());
+            final EditText doseEditText = findViewById(R.id.dosage_edittext);
+            initialDose = Integer.parseInt(doseEditText.getText().toString());
+
+            final RadioButton singleDoseRadio = findViewById(R.id.single_dose_radio);
+            TakenDrug simulation = new TakenDrug(hl);
+            if (singleDoseRadio.isChecked()){
+                simulation.SimulateSingleDose(initialDose);
+            }
+             else {
+                final EditText freqEditText = findViewById(R.id.frequency_edit_text);
+                freq = Integer.parseInt(freqEditText.getText().toString());
+                simulation.SimulateRepeatedDose(initialDose, initialDose, freq);
+            }
+
+            WebView webview = findViewById(R.id.webview_graph);
+
+            int webview_height = Integer.parseInt(getResources().getString(R.string.webview_height));
+            int webview_width = Integer.parseInt(getResources().getString(R.string.webview_width));
+
+           String doseUnit = dosage_spinner.getSelectedItem().toString();
+           String halflifeUnit = half_life_unit_spinner.getSelectedItem().toString();
+
+            String content = "<html> <head> <script type=\"text/javascript\" src=\"https://www.gstatic.com/charts/loader.js\"></script> <script type=\"text/javascript\">"
+                    + "google.charts.load('current', {'packages':['corechart']});"
+                    + "google.charts.setOnLoadCallback(drawChart);"
+                    + "function drawChart() { var data = google.visualization.arrayToDataTable("
+                    + "[ ['Time', 'Concentration'],"
+                    + GenerateDataTable(simulation)
+                    //+"[0, 100], [1, 80], [2, 65], [3, 55]"
+                    + "]); var options = { "
+                    + "title: 'Medicine Halflife Simulation'"
+                    + ", vAxis: {title: 'Concentration ("
+                    + doseUnit
+                    + ")'}, hAxis: {title: 'Time ("
+                    + halflifeUnit
+                    + ")'}, curveType: 'function', legend: { position: 'bottom' } }; var chart = new google.visualization.LineChart(document.getElementById('curve_chart')); chart.draw(data, options); } </script> </head> <body> <div id=\"curve_chart\" style=\"width: "
+                    + webview_width
+                    + "px; height: "
+                    + webview_height
+                    + "px\"></div> </body> </html>";
+            WebSettings webSettings = webview.getSettings();
+            webSettings.setJavaScriptEnabled(true);
+            webview.requestFocusFromTouch();
+            webview.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
+        }
+        catch (NumberFormatException e){
+            e.printStackTrace();
+            Snackbar.make(findViewById(R.id.coordinatorLayout_main), "Please give all information", Snackbar.LENGTH_LONG)
+                    .show();
+        }
+
+        // Gets input manager from android's system services
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        // Hides the keyboard, but do not override "force keyboard" flags
+        if (inputManager != null ) {
+            inputManager.hideSoftInputFromWindow(findViewById(R.id.action_graph).getWindowToken(),
+                    InputMethodManager.HIDE_NOT_ALWAYS);
+        }
     }
 
     @Override
@@ -145,6 +229,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_graph) {
+            graph_timeline();
             return true;
         }
 
