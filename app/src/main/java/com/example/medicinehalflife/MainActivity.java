@@ -1,6 +1,8 @@
 package com.example.medicinehalflife;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -217,7 +219,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_graph) {
-            graph_timeline();
+            ConnectivityManager connMgr = (ConnectivityManager)
+                    getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = null;
+            if (connMgr != null) {
+                networkInfo = connMgr.getActiveNetworkInfo();
+            }
+
+            // Only try to graph using the API if we have internet
+            if (networkInfo != null && networkInfo.isConnected()) {
+                graph_timeline();
+            } else {
+                Toast.makeText(getApplicationContext(), "No Internet Found", Toast.LENGTH_SHORT).show();
+            }
+
             return true;
         }
 
