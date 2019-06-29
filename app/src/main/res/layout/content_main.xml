@@ -8,64 +8,74 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:id="@+id/drug_name_label"
-        style="@style/TextAppearance.AppCompat.Subhead"
-        android:layout_width="wrap_content"
+    <!-- Grouping & Set focusable for visually impaired users -->
+    <LinearLayout
+        android:id="@+id/drug_search"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/drug_name_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <AutoCompleteTextView
-        android:id="@+id/drug_name_AutoCompTV"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/drug_name_hint"
-        app:layout_constraintBaseline_toBaselineOf="@id/drug_name_label"
+        android:contentDescription="@string/drug_search_description"
+        android:focusable="true"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/drug_name_label"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/half_life_label"
-        style="@style/TextAppearance.AppCompat.Subhead"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/half_life_label"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/drug_name_AutoCompTV" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/drug_half_life_edittext"
-        style="@style/TextAppearance.AppCompat.Subhead"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:enabled="false"
-        android:inputType="number"
-        app:layout_constraintBaseline_toBaselineOf="@id/half_life_label"
-        app:layout_constraintEnd_toStartOf="@id/halflife_unit"
-        app:layout_constraintStart_toEndOf="@id/half_life_label" />
+        <TextView
+            android:id="@+id/drug_name_label"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/drug_name_label" />
 
-    <Spinner
-        android:id="@+id/halflife_unit"
-        android:layout_width="120dp"
+        <AutoCompleteTextView
+            android:id="@+id/drug_name_AutoCompTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/drug_name_hint" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/half_life_input_linear_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/dosage_radio_group"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/drug_half_life_edittext"
-        app:layout_constraintTop_toBottomOf="@id/drug_name_AutoCompTV" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/drug_search">
+
+        <TextView
+            android:id="@+id/half_life_label"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/half_life_label" />
+
+        <EditText
+            android:id="@+id/drug_half_life_edittext"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:contentDescription="@string/input_for_the_half_life_description"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="number" />
+
+        <Spinner
+            android:id="@+id/halflife_unit"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/spinner_for_choosing_the_half_life_unit_description" />
+    </LinearLayout>
 
     <RadioGroup
         android:id="@+id/dosage_radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/drug_half_life_edittext">
+        app:layout_constraintTop_toBottomOf="@id/half_life_input_linear_layout">
 
         <RadioButton
             android:id="@+id/single_dose_radio"
