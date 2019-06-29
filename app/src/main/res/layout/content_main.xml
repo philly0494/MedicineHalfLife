@@ -17,10 +17,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/drug_name_spinner"
+    <AutoCompleteTextView
+        android:id="@+id/drug_name_AutoCompTV"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/drug_name_hint"
+        app:layout_constraintBaseline_toBaselineOf="@id/drug_name_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/drug_name_label"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,7 +36,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/half_life_label"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/drug_name_spinner" />
+        app:layout_constraintTop_toBottomOf="@id/drug_name_AutoCompTV" />
 
     <EditText
         android:id="@+id/drug_half_life_edittext"
@@ -55,7 +58,7 @@
         app:layout_constraintBottom_toTopOf="@id/dosage_radio_group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/drug_half_life_edittext"
-        app:layout_constraintTop_toBottomOf="@id/drug_name_spinner" />
+        app:layout_constraintTop_toBottomOf="@id/drug_name_AutoCompTV" />
 
     <RadioGroup
         android:id="@+id/dosage_radio_group"
@@ -96,8 +99,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:text="@string/initial_dosage_value"
         android:inputType="number"
+        android:text="@string/initial_dosage_value"
         app:layout_constraintBaseline_toBaselineOf="@id/dosage_label_textview"
         app:layout_constraintEnd_toStartOf="@id/dosage_unit_spinner"
         app:layout_constraintStart_toEndOf="@id/dosage_label_textview" />
@@ -167,10 +170,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/custom_halflife_checkbox"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/custom_halflife_checkbox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

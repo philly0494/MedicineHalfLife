@@ -1,6 +1,7 @@
 package com.example.medicinehalflife;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.Menu;
@@ -18,9 +19,12 @@ import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+import java.util.ArrayList;
+import java.util.Arrays;
 
-    private Spinner drug_name_spinner;
+public class MainActivity extends AppCompatActivity{
+
+    private AutoCompleteTextView drug_name_AutoCompTV;
     private Spinner dosage_spinner;
     private Spinner half_life_unit_spinner;
     private CheckBox checkBox;
@@ -92,16 +96,34 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         td.SimulateSingleDose(1000);
         td.SimulateRepeatedDose(100, 100, 4);
 
-        // set up drug_name_spinner
-        drug_name_spinner = findViewById(R.id.drug_name_spinner);
-        if (drug_name_spinner != null) {
-            drug_name_spinner.setOnItemSelectedListener(this);
-        }
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this, R.array.drug_names, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        if (drug_name_spinner != null) {
-            drug_name_spinner.setAdapter(adapter);
+
+        // set up drug_name_AutoCompleteTV
+        drug_name_AutoCompTV = findViewById(R.id.drug_name_AutoCompTV);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(
+                this, android.R.layout.select_dialog_item, getResources().getTextArray(R.array.drug_names));
+        drug_name_AutoCompTV.setThreshold(1); // will start working from the first character
+        drug_name_AutoCompTV.setAdapter(adapter);
+        drug_name_AutoCompTV.setTextColor(Color.RED);
+
+        //Set the onclick for when the user actually clicks on the autocomplete choices
+        if (drug_name_AutoCompTV != null) {
+            drug_name_AutoCompTV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String drugName = parent.getItemAtPosition(position).toString();
+                    int halflife = 0;
+                    // Gets the array of drug names as an ArrayList, we need it to use the indexOf method.
+                    ArrayList<String> drugNames = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.drug_names)));
+                    // Get the real position of the drug name in our drug names array
+                    int realPos = drugNames.indexOf(drugName);
+
+                    //Find the correlating half life value and set it as the half life of the edit text. Warning: drug_names array and drug_half_life_values size must match
+                    String[] drugHLs = getResources().getStringArray(R.array.drug_half_life_values);
+                    // Warning: Do not use Position. It is the position of the "GENERATED LIST", meaning if the auto complete list only has one item, that POS is always 0.
+                    halflife = Integer.parseInt(drugHLs[realPos]);
+                    half_life_input.setText(String.format("%s", halflife));
+                }
+            });
         }
         checkBox = findViewById(R.id.custom_halflife_checkbox);
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -109,26 +131,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // Enable the user to input their own half-life if the box is checked
                 half_life_input.setEnabled(isChecked);
-                drug_name_spinner.setEnabled(!isChecked);
+                drug_name_AutoCompTV.setEnabled(!isChecked);
             }
         });
-
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String drugName = parent.getItemAtPosition(position).toString();
-        int halflife = 0;
-        //ArrayList<String> drugNames = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.drug_names)));
-        //ArrayList<String> drugHLs = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.drug_half_life_values)));
-        String[] drugHLs = getResources().getStringArray(R.array.drug_half_life_values);
-        halflife = Integer.parseInt(drugHLs[position]);
-        half_life_input.setText(String.format("%s", halflife));
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 
