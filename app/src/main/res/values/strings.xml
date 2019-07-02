@@ -37,6 +37,10 @@
     <string name="webview_height">350</string>
     <string name="webview_width">350</string>
     <string name="initial_dosage_value">500</string>
+    <string name="drug_name_hint">Search here</string>
+    <string name="drug_search_description">Search for drug names here:</string>
+    <string name="input_for_the_half_life_description">Input for the Half Life</string>
+    <string name="spinner_for_choosing_the_half_life_unit_description">Spinner for choosing the half life unit</string>
 
 
 </resources>
