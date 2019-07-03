@@ -11,11 +11,6 @@ public class TakenDrug {
         this.halflife = hl;
     }
 
-    public TakenDrug(Drug d) {
-        this.halflife = d.HalflifeMinutes;
-        this.Name = d.Name;
-    }
-
     //Simulates concentration over time.  Requires halflife
     public void SimulateSingleDose(int initialDose){
         concentrations = new double[60*24];  //minute-by-minute for 24 hours

@@ -1,6 +1,7 @@
 package com.example.medicinehalflife;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -14,6 +15,8 @@ import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 
@@ -21,10 +24,11 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
-    private AutoCompleteTextView drug_name_AutoCompTV;
     private Spinner dosage_spinner;
     private Spinner half_life_unit_spinner;
     private CheckBox checkBox;
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity{
     private RadioButton single_dose_button;
     private RadioGroup dosage_radio_group;
 
+    private DrugViewModel mDrugViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,39 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        final TextView drugNameLabel = findViewById(R.id.drug_name_label);
+
+        final AutoCompleteTextView drug_name_AutoCompTV;
+
+        // set up drug_name_AutoCompleteTV
+        drug_name_AutoCompTV = findViewById(R.id.drug_name_AutoCompTV);
+
+        final ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(
+                this, android.R.layout.select_dialog_item, getResources().getTextArray(R.array.drug_names));
+        drug_name_AutoCompTV.setThreshold(1); // will start working from the first character
+        drug_name_AutoCompTV.setAdapter(adapter);
+
+        mDrugViewModel = ViewModelProviders.of(this).get(DrugViewModel.class);
+        mDrugViewModel.getAllDrugs().observe(this, new Observer<List<Drug>>() {
+            @Override
+            public void onChanged(List<Drug> drugs) {
+                // Update the cached copy of the drugs in the adapter.
+                // TODO: PUT INFORMATION INTO ARRAYADAPTER
+                List<Drug> myDrugList = mDrugViewModel.getAllDrugs().getValue();
+
+                String[] drugNames = new String[myDrugList.size()];
+                int i = 0;
+                while (i < myDrugList.size()) {
+                    drugNames[i] = myDrugList.get(i).getName();
+                    i++;
+               }
+                final ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter<CharSequence>(
+                        getApplicationContext(), android.R.layout.select_dialog_item, drugNames);
+                drug_name_AutoCompTV.setAdapter(adapter2);
+
+            }
+        });
 
         half_life_input = findViewById(R.id.drug_half_life_edittext);
         single_dose_button = findViewById(R.id.single_dose_radio);
@@ -96,15 +134,7 @@ public class MainActivity extends AppCompatActivity{
         td.SimulateSingleDose(1000);
         td.SimulateRepeatedDose(100, 100, 4);
 
-
-        // set up drug_name_AutoCompleteTV
-        drug_name_AutoCompTV = findViewById(R.id.drug_name_AutoCompTV);
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(
-                this, android.R.layout.select_dialog_item, getResources().getTextArray(R.array.drug_names));
-        drug_name_AutoCompTV.setThreshold(1); // will start working from the first character
-        drug_name_AutoCompTV.setAdapter(adapter);
-        drug_name_AutoCompTV.setTextColor(Color.RED);
-
+        //TODO: RECREATE THIS ON ITEM CLICK LISTENER. INSIDE THE OBSERVER.
         //Set the onclick for when the user actually clicks on the autocomplete choices
         if (drug_name_AutoCompTV != null) {
             drug_name_AutoCompTV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -135,17 +165,6 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-    }
-
-    private String GenerateDataTable(TakenDrug simulation) {
-        String ret = "";
-        for (int i = 0; i < simulation.concentrations.length; i++) {
-            ret += "[" + i + "," + simulation.concentrations[i] + "]";
-            if (i < simulation.concentrations.length - 1) {
-                ret += ",";
-            }
-        }
-        return ret;
     }
 
     public void graph_timeline() {
@@ -239,6 +258,10 @@ public class MainActivity extends AppCompatActivity{
             }
 
             return true;
+        }
+        if (id == R.id.action_database) {
+            Intent intent = new Intent(this, DrugDatabase.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

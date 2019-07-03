@@ -9,4 +9,10 @@
         android:title="@string/action_graph"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/action_database"
+        android:orderInCategory="20"
+        android:title="Database"
+        app:showAsAction="ifRoom" />
+
 </menu>
