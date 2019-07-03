@@ -29,12 +29,12 @@ public class DrugListAdapter extends RecyclerView.Adapter<DrugListAdapter.DrugVi
 
     @Override
     public void onBindViewHolder(@NonNull DrugViewHolder holder, int position) {
-        if (mDrugs != null){
+        if (mDrugs != null) {
             Drug current = mDrugs.get(position);
             holder.drugIdView.setText(current.getId());
             holder.drugNameView.setText(current.getName());
             holder.drugHalfLifeView.setText(current.getHalfLife());
-        } else{
+        } else {
             holder.drugIdView.setText("No Drug");
         }
 
