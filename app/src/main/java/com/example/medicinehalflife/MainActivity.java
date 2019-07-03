@@ -1,6 +1,7 @@
 package com.example.medicinehalflife;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity{
     private EditText half_life_input;
     private RadioButton single_dose_button;
     private RadioGroup dosage_radio_group;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,11 +99,10 @@ public class MainActivity extends AppCompatActivity{
 
         // set up drug_name_AutoCompleteTV
         drug_name_AutoCompTV = findViewById(R.id.drug_name_AutoCompTV);
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(
+        final ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(
                 this, android.R.layout.select_dialog_item, getResources().getTextArray(R.array.drug_names));
         drug_name_AutoCompTV.setThreshold(1); // will start working from the first character
         drug_name_AutoCompTV.setAdapter(adapter);
-        drug_name_AutoCompTV.setTextColor(Color.RED);
 
         //Set the onclick for when the user actually clicks on the autocomplete choices
         if (drug_name_AutoCompTV != null) {
@@ -135,17 +134,6 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-    }
-
-    private String GenerateDataTable(TakenDrug simulation) {
-        String ret = "";
-        for (int i = 0; i < simulation.concentrations.length; i++) {
-            ret += "[" + i + "," + simulation.concentrations[i] + "]";
-            if (i < simulation.concentrations.length - 1) {
-                ret += ",";
-            }
-        }
-        return ret;
     }
 
     public void graph_timeline() {
@@ -239,6 +227,10 @@ public class MainActivity extends AppCompatActivity{
             }
 
             return true;
+        }
+        if (id == R.id.action_database){
+            Intent intent = new Intent(this, DrugDatabase.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
