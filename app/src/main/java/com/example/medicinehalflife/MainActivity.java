@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 final ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter<CharSequence>(
                         getApplicationContext(), android.R.layout.select_dialog_item, drugNames);
                 drug_name_AutoCompTV.setAdapter(adapter2);
+
             }
         });
 
@@ -133,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         td.SimulateSingleDose(1000);
         td.SimulateRepeatedDose(100, 100, 4);
 
+        //TODO: RECREATE THIS ON ITEM CLICK LISTENER. INSIDE THE OBSERVER.
         //Set the onclick for when the user actually clicks on the autocomplete choices
         if (drug_name_AutoCompTV != null) {
             drug_name_AutoCompTV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
