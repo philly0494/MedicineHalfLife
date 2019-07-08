@@ -1,10 +1,12 @@
-package com.example.medicinehalflife;
+package com.example.medicinehalflife.graph;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import com.example.medicinehalflife.data.Drug;
+import com.example.medicinehalflife.graph.DrugRepository;
 
 import java.util.List;
 
@@ -21,6 +23,10 @@ public class DrugViewModel extends AndroidViewModel {
 
     LiveData<List<Drug>> getAllDrugs(){
         return mAllDrugs;
+    }
+
+    int getHalfLife(String drugName){
+        return mRepository.getHalfLife(drugName);
     }
 
 }

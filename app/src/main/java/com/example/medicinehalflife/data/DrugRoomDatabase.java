@@ -1,4 +1,4 @@
-package com.example.medicinehalflife;
+package com.example.medicinehalflife.data;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -9,6 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.medicinehalflife.DrugClass;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

@@ -1,17 +1,19 @@
-package com.example.medicinehalflife;
+package com.example.medicinehalflife.recycler;
 
 import android.app.Application;
-
 import androidx.lifecycle.LiveData;
+import com.example.medicinehalflife.data.Drug;
+import com.example.medicinehalflife.data.DrugDao;
+import com.example.medicinehalflife.data.DrugRoomDatabase;
 
 import java.util.List;
 
-public class DrugRepository {
+public class RecyclerRepository {
 
     private DrugDao mDrugDao;
     private LiveData<List<Drug>> mAllDrug;
 
-    DrugRepository(Application application){
+    RecyclerRepository(Application application){
         DrugRoomDatabase db = DrugRoomDatabase.getDatabase(application);
         mDrugDao = db.drugDao();
         mAllDrug = mDrugDao.getAllDrugs();
