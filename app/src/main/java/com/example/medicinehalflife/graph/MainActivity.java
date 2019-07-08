@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton single_dose_button;
     private RadioGroup dosage_radio_group;
 
+    // TODO: MOVE DRUG JSON FILE INTO RESOURCES AND USE GETRESOURCES RATHER THAN GETASSETS.
+
     private DrugViewModel mDrugViewModel;
 
     @Override
