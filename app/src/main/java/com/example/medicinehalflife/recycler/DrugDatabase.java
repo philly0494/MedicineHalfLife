@@ -1,4 +1,4 @@
-package com.example.medicinehalflife;
+package com.example.medicinehalflife.recycler;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -7,12 +7,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import com.example.medicinehalflife.R;
+import com.example.medicinehalflife.graph.DrugViewModel;
+import com.example.medicinehalflife.data.Drug;
 
 import java.util.List;
 
 public class DrugDatabase extends AppCompatActivity {
 
-    private DrugViewModel mDrugViewModel;
+    private RecyclerViewModel mRecyclerViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +29,8 @@ public class DrugDatabase extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mDrugViewModel = ViewModelProviders.of(this).get(DrugViewModel.class);
-        mDrugViewModel.getAllDrugs().observe(this, new Observer<List<Drug>>() {
+        mRecyclerViewModel = ViewModelProviders.of(this).get(RecyclerViewModel.class);
+        mRecyclerViewModel.getAllDrugs().observe(this, new Observer<List<Drug>>() {
             @Override
             public void onChanged(List<Drug> drugs) {
                 // Update the cached copy of the drugs in the adapter.

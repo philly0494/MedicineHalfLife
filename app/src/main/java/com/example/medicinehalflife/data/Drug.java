@@ -1,9 +1,10 @@
-package com.example.medicinehalflife;
+package com.example.medicinehalflife.data;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import com.example.medicinehalflife.DrugClass;
 
 @Entity(tableName = "drug_list")
 public class Drug {

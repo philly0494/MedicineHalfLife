@@ -1,8 +1,7 @@
-package com.example.medicinehalflife;
+package com.example.medicinehalflife.graph;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.Menu;
@@ -20,12 +19,16 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 
+import com.example.medicinehalflife.recycler.DrugDatabase;
+import com.example.medicinehalflife.HtmlContentBuilder;
+import com.example.medicinehalflife.R;
+import com.example.medicinehalflife.TakenDrug;
+import com.example.medicinehalflife.data.Drug;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText half_life_input;
     private RadioButton single_dose_button;
     private RadioGroup dosage_radio_group;
+
+    // TODO: MOVE DRUG JSON FILE INTO RESOURCES AND USE GETRESOURCES RATHER THAN GETASSETS.
 
     private DrugViewModel mDrugViewModel;
 
@@ -70,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 while (i < myDrugList.size()) {
                     drugNames[i] = myDrugList.get(i).getName();
                     i++;
-               }
+                }
                 final ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter<CharSequence>(
                         getApplicationContext(), android.R.layout.select_dialog_item, drugNames);
                 drug_name_AutoCompTV.setAdapter(adapter2);
@@ -140,17 +145,10 @@ public class MainActivity extends AppCompatActivity {
             drug_name_AutoCompTV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                     String drugName = parent.getItemAtPosition(position).toString();
                     int halflife = 0;
-                    // Gets the array of drug names as an ArrayList, we need it to use the indexOf method.
-                    ArrayList<String> drugNames = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.drug_names)));
-                    // Get the real position of the drug name in our drug names array
-                    int realPos = drugNames.indexOf(drugName);
-
-                    //Find the correlating half life value and set it as the half life of the edit text. Warning: drug_names array and drug_half_life_values size must match
-                    String[] drugHLs = getResources().getStringArray(R.array.drug_half_life_values);
-                    // Warning: Do not use Position. It is the position of the "GENERATED LIST", meaning if the auto complete list only has one item, that POS is always 0.
-                    halflife = Integer.parseInt(drugHLs[realPos]);
+                    halflife = mDrugViewModel.getHalfLife(drugName);
                     half_life_input.setText(String.format("%s", halflife));
                 }
             });
