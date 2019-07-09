@@ -36,13 +36,11 @@
 
     </LinearLayout>
 
-
     <Button
         android:id="@+id/new_drug_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/add_drug_save_button"
+        android:layout_marginTop="8dp"
         android:onClick="saveNewDrug"
         android:text="@string/add_drug_save_button" />
-
 
 </LinearLayout>
