@@ -151,7 +151,11 @@ public class MainActivity extends AppCompatActivity {
             initialDose = Integer.parseInt(doseEditText.getText().toString());
 
             final RadioButton singleDoseRadio = findViewById(R.id.single_dose_radio);
-            TakenDrug simulation = new TakenDrug(hl);
+
+            String doseUnit = dosage_spinner.getSelectedItem().toString();
+            String halflifeUnit = half_life_unit_spinner.getSelectedItem().toString();
+
+            TakenDrug simulation = new TakenDrug(hl, halflifeUnit);
             if (singleDoseRadio.isChecked()) {
                 simulation.SimulateSingleDose(initialDose);
             } else {
@@ -164,9 +168,6 @@ public class MainActivity extends AppCompatActivity {
 
             int webview_height = Integer.parseInt(getResources().getString(R.string.webview_height));
             int webview_width = Integer.parseInt(getResources().getString(R.string.webview_width));
-
-            String doseUnit = dosage_spinner.getSelectedItem().toString();
-            String halflifeUnit = half_life_unit_spinner.getSelectedItem().toString();
 
             // Moved the content to it's own class
             HtmlContentBuilder builder = new HtmlContentBuilder();
