@@ -43,6 +43,7 @@
     <string name="input_for_the_half_life_description">Input for the Half Life</string>
     <string name="spinner_for_choosing_the_half_life_unit_description">Spinner for choosing the half life unit</string>
     <string name="action_database_title">Database</string>
+    <string name="custom_drug_text">Custom Drug</string>
 
 
 </resources>

@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main">
 
     <!-- Grouping & Set focusable for visually impaired users -->
-    <!-- TODO:include "shown in : main activity" -->
     <LinearLayout
         android:id="@+id/drug_search"
         android:layout_width="match_parent"
@@ -162,7 +162,8 @@
         android:visibility="gone"
         app:layout_constraintBaseline_toBaselineOf="@id/frequency_edit_text"
         app:layout_constraintStart_toEndOf="@id/frequency_edit_text"
-        tools:text="mins"
+        tools:text="minutes"
+        android:enabled="false"
         tools:visibility="visible" />
 
     <CheckBox
