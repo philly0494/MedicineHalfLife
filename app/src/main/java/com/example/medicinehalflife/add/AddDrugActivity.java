@@ -48,6 +48,7 @@ public class AddDrugActivity extends AppCompatActivity {
         if (isDuplicate == null) {
             mAddDrugViewModel.addDrug(drug);
             Intent intent = new Intent(this, RecyclerDatabase.class);
+            Toast.makeText(this, "New Drug Added", Toast.LENGTH_SHORT).show();
             startActivity(intent);
         } else {
             Toast.makeText(this, "New Drug Name must be Unique", Toast.LENGTH_SHORT).show();
