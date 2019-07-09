@@ -37,5 +37,6 @@
     <string name="webview_height">500</string>
     <string name="webview_width">500</string>
 
+    <string name="action_database_title">Drugs</string>
 
 </resources>
