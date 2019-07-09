@@ -50,7 +50,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/half_life_label"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/drug_half_life_edittext"
@@ -63,17 +65,19 @@
             android:ems="10"
             android:enabled="false"
             android:inputType="number"
-            app:layout_constraintStart_toEndOf="@id/half_life_label"
             app:layout_constraintBaseline_toBaselineOf="@id/half_life_label"
-            app:layout_constraintEnd_toStartOf="@id/halflife_unit" />
+            app:layout_constraintEnd_toStartOf="@id/halflife_unit"
+            app:layout_constraintStart_toEndOf="@id/half_life_label" />
 
         <Spinner
             android:id="@+id/halflife_unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="minutes"
+            android:contentDescription="@string/spinner_for_choosing_the_half_life_unit_description"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:contentDescription="@string/spinner_for_choosing_the_half_life_unit_description" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="minutes" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RadioGroup
@@ -159,11 +163,11 @@
         style="@style/TextAppearance.AppCompat.Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:visibility="gone"
         app:layout_constraintBaseline_toBaselineOf="@id/frequency_edit_text"
         app:layout_constraintStart_toEndOf="@id/frequency_edit_text"
         tools:text="minutes"
-        android:enabled="false"
         tools:visibility="visible" />
 
     <CheckBox
