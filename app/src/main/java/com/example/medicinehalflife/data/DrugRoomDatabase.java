@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
-@Database(entities = {Drug.class}, version = 1, exportSchema = false)
+@Database(entities = {Drug.class}, version = 2, exportSchema = false)
 public abstract class DrugRoomDatabase extends RoomDatabase {
 
     public abstract DrugDao drugDao();
@@ -71,7 +71,8 @@ public abstract class DrugRoomDatabase extends RoomDatabase {
                         JSONObject oneDrug = myDrugs.getJSONObject(i);
                         Drug drug = new Drug(oneDrug.getString(DrugClass.DRUG_ID),
                                 oneDrug.getString(DrugClass.DRUG_NAME),
-                                oneDrug.getString(DrugClass.DRUG_HALF_LIFE));
+                                oneDrug.getString(DrugClass.DRUG_HALF_LIFE),
+                                oneDrug.getString(DrugClass.DRUG_HALF_LIFE_UNIT));
                         mDao.insert(drug);
                     } catch (Exception e) {
                         e.printStackTrace();

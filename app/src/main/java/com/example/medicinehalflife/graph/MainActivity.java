@@ -186,15 +186,14 @@ public class MainActivity extends AppCompatActivity {
                     .show();
         }
 
-        // Gets input manager from android's system services
-        InputMethodManager inputManager = (InputMethodManager)
-                getSystemService(Context.INPUT_METHOD_SERVICE);
-
-        // Hides the keyboard, but do not override "force keyboard" flags
-        if (inputManager != null) {
-            inputManager.hideSoftInputFromWindow(findViewById(R.id.action_graph).getWindowToken(),
-                    InputMethodManager.HIDE_NOT_ALWAYS);
-        }
+//       // TODO: UNCOMMENT OUT THIS CODE WHEN YOU CHANGE ACTION GRAPH BACK TO APP:SHOWN WHEN ROOM
+//       // Gets input manager from android's system services
+//       InputMethodManager inputManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+//       // Hides the keyboard, but do not override "force keyboard" flags
+//       if (inputManager != null) {
+//           inputManager.hideSoftInputFromWindow(findViewById(R.id.action_graph).getWindowToken(),
+//                   InputMethodManager.HIDE_NOT_ALWAYS);
+//       }
     }
 
     @Override

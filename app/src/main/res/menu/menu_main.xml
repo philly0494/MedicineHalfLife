@@ -3,16 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".graph.MainActivity">
 
+    <!-- TODO: change android namespace to app in shownAsAction -->
     <item
         android:id="@+id/action_graph"
         android:orderInCategory="10"
         android:title="@string/action_graph"
-        app:showAsAction="ifRoom" />
+        android:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_database"
         android:orderInCategory="20"
-        android:title="Database"
-        app:showAsAction="ifRoom" />
+        android:title="@string/action_database_title"
+        android:showAsAction="ifRoom" />
 
 </menu>

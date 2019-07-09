@@ -33,11 +33,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DrugVi
     public void onBindViewHolder(@NonNull DrugViewHolder holder, int position) {
         if (mDrugs != null) {
             Drug current = mDrugs.get(position);
-            holder.drugIdView.setText(current.getId());
             holder.drugNameView.setText(current.getName());
             holder.drugHalfLifeView.setText(current.getHalfLife());
+            holder.drugHalfLifeUnitView.setText(current.getHalfLifeUnit());
         } else {
-            holder.drugIdView.setText("No Drug");
+            holder.drugNameView.setText("No Drug");
         }
 
     }
@@ -61,16 +61,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DrugVi
 
     class DrugViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView drugIdView;
         private final TextView drugNameView;
         private final TextView drugHalfLifeView;
+        private final TextView drugHalfLifeUnitView;
 
 
         public DrugViewHolder(@NonNull View itemView) {
             super(itemView);
-            drugIdView = itemView.findViewById(R.id.drug_id_list_item);
             drugNameView = itemView.findViewById(R.id.drug_name_list_item);
             drugHalfLifeView = itemView.findViewById(R.id.drug_half_life_list_item);
+            drugHalfLifeUnitView = itemView.findViewById(R.id.drug_half_life_unit_list_item);
         }
     }
 

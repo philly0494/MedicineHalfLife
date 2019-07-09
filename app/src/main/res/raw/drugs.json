@@ -6,22 +6,26 @@
     {
       "id": 1,
       "name": "Acetaminophen",
-      "half_life": 180
+      "half_life": 180,
+      "unit":"minutes"
     },
     {
       "id": 2,
       "name": "Dextromethorphan",
-      "half_life": 240
+      "half_life": 240,
+      "unit":"minutes"
     },
     {
       "id": 3,
       "name": "Cocaine",
-      "half_life": 60
+      "half_life": 60,
+      "unit":"minutes"
     },
     {
       "id": 4,
       "name": "Marijuana",
-      "half_life": 180
+      "half_life": 180,
+      "unit":"minutes"
     }
   ]
 }

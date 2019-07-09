@@ -8,21 +8,25 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "drug_list")
 public class Drug {
 
-    @PrimaryKey
-    @NonNull
     @ColumnInfo(name = DrugClass.DRUG_ID)
     private String mId;
 
+    @PrimaryKey
+    @NonNull
     @ColumnInfo(name = DrugClass.DRUG_NAME)
     public String mName;
 
     @ColumnInfo(name = DrugClass.DRUG_HALF_LIFE)
     public String mHalfLife;
 
-    public Drug(@NonNull String id, String name, String halfLife) {
+    @ColumnInfo(name = DrugClass.DRUG_HALF_LIFE_UNIT)
+    public String mHalfLifeUnit;
+
+    public Drug(@NonNull String id, String name, String halfLife, String halfLifeUnit) {
         this.mId = id;
         this.mName = name;
         this.mHalfLife = halfLife;
+        this.mHalfLifeUnit = halfLifeUnit;
     }
 
     public String getId() {
@@ -35,6 +39,9 @@ public class Drug {
 
     public String getHalfLife() {
         return mHalfLife;
+    }
+
+    public String getHalfLifeUnit(){ return mHalfLifeUnit;
     }
 
 }
