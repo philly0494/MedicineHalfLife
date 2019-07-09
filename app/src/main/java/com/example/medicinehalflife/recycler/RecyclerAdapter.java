@@ -13,12 +13,12 @@ import com.example.medicinehalflife.data.Drug;
 
 import java.util.List;
 
-public class DrugListAdapter extends RecyclerView.Adapter<DrugListAdapter.DrugViewHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DrugViewHolder> {
 
     private final LayoutInflater mInflater;
     private List<Drug> mDrugs;// Cached copy of drugs
 
-    DrugListAdapter(Context context) {
+    RecyclerAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
     }
 

@@ -1,4 +1,4 @@
-package com.example.medicinehalflife;
+package com.example.medicinehalflife.data;
 
 public class DrugClass {
     public static final String DRUG_ID = "id";

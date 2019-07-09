@@ -11,12 +11,12 @@ import com.example.medicinehalflife.data.DrugRoomDatabase;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class DrugRepository {
+public class GraphRepository {
 
     private DrugDao mDrugDao;
     private LiveData<List<Drug>> mAllDrug;
 
-    DrugRepository(Application application){
+    GraphRepository(Application application){
         DrugRoomDatabase db = DrugRoomDatabase.getDatabase(application);
         mDrugDao = db.drugDao();
         mAllDrug = mDrugDao.getAllDrugs();

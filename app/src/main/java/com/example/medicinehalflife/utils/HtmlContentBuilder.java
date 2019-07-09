@@ -1,4 +1,4 @@
-package com.example.medicinehalflife;
+package com.example.medicinehalflife.utils;
 
 import androidx.annotation.NonNull;
 
