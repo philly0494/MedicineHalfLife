@@ -5,27 +5,27 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+
 import com.example.medicinehalflife.data.Drug;
-import com.example.medicinehalflife.graph.DrugRepository;
 
 import java.util.List;
 
-public class DrugViewModel extends AndroidViewModel {
+public class GraphViewModel extends AndroidViewModel {
 
-    private DrugRepository mRepository;
+    private GraphRepository mRepository;
     private LiveData<List<Drug>> mAllDrugs;
 
-    public DrugViewModel(@NonNull Application application) {
+    public GraphViewModel(@NonNull Application application) {
         super(application);
-        mRepository = new DrugRepository(application);
+        mRepository = new GraphRepository(application);
         mAllDrugs = mRepository.getAllDrugs();
     }
 
-    LiveData<List<Drug>> getAllDrugs(){
+    LiveData<List<Drug>> getAllDrugs() {
         return mAllDrugs;
     }
 
-    int getHalfLife(String drugName){
+    int getHalfLife(String drugName) {
         return mRepository.getHalfLife(drugName);
     }
 

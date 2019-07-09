@@ -1,0 +1,27 @@
+{
+  "info": {
+    "link": "https://sunrisehouse.com/prescription-drug-addiction-recovery/half-life/"
+  },
+  "drugs": [
+    {
+      "id": 1,
+      "name": "Acetaminophen",
+      "half_life": 180
+    },
+    {
+      "id": 2,
+      "name": "Dextromethorphan",
+      "half_life": 240
+    },
+    {
+      "id": 3,
+      "name": "Cocaine",
+      "half_life": 60
+    },
+    {
+      "id": 4,
+      "name": "Marijuana",
+      "half_life": 180
+    }
+  ]
+}

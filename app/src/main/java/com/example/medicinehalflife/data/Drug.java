@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import com.example.medicinehalflife.DrugClass;
 
 @Entity(tableName = "drug_list")
 public class Drug {
@@ -20,21 +19,21 @@ public class Drug {
     @ColumnInfo(name = DrugClass.DRUG_HALF_LIFE)
     public String mHalfLife;
 
-    public Drug(@NonNull String id, String name, String halfLife){
+    public Drug(@NonNull String id, String name, String halfLife) {
         this.mId = id;
         this.mName = name;
         this.mHalfLife = halfLife;
     }
-    
-    public String getId(){
+
+    public String getId() {
         return mId;
     }
 
-    public String getName(){
+    public String getName() {
         return mName;
     }
 
-    public String getHalfLife(){
+    public String getHalfLife() {
         return mHalfLife;
     }
 

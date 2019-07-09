@@ -1,4 +1,4 @@
-package com.example.medicinehalflife;
+package com.example.medicinehalflife.utils;
 //dimensionless computation of concentration
 public class TakenDrug {
     //Drug drug;

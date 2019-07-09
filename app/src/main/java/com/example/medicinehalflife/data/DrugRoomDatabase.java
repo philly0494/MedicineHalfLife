@@ -9,7 +9,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.medicinehalflife.DrugClass;
+import com.example.medicinehalflife.R;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -36,7 +37,7 @@ public abstract class DrugRoomDatabase extends RoomDatabase {
                             @Override
                             public void onOpen(@NonNull SupportSQLiteDatabase db) {
                                 super.onOpen(db);
-                                new PopulateDbAsync(INSTANCE,context).execute();
+                                new PopulateDbAsync(INSTANCE, context).execute();
                             }
                         })
                         .build();
@@ -89,7 +90,7 @@ public abstract class DrugRoomDatabase extends RoomDatabase {
         String tContents = "";
 
         try {
-            InputStream stream = context.getAssets().open("drugs.json");
+            InputStream stream = context.getResources().openRawResource(R.raw.drugs);
 
             int size = stream.available();
             byte[] buffer = new byte[size];
