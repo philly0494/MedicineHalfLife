@@ -7,12 +7,12 @@
         android:id="@+id/action_graph"
         android:orderInCategory="10"
         android:title="@string/action_graph"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_database"
         android:orderInCategory="20"
-        android:title="Database"
+        android:title="@string/action_database_title"
         app:showAsAction="ifRoom" />
 
 </menu>

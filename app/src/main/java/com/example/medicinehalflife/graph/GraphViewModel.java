@@ -25,8 +25,8 @@ public class GraphViewModel extends AndroidViewModel {
         return mAllDrugs;
     }
 
-    int getHalfLife(String drugName) {
-        return mRepository.getHalfLife(drugName);
+    Drug getDrugByName(String drugName){
+     return mRepository.getDrugByName(drugName);
     }
 
 }

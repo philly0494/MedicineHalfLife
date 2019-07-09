@@ -1,28 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android=
-    "http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/drug_id_list_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="id: 1"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp" />
+    style="@style/recycler_view_item_style"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="8dp">
 
     <TextView
         android:id="@+id/drug_name_list_item"
-        android:layout_width="wrap_content"
+        style="@style/text_view_in_recycler_item_style"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="name: Cow"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp" />
+        android:layout_margin="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/drug_half_life_list_item"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Tylenol" />
 
     <TextView
         android:id="@+id/drug_half_life_list_item"
+        style="@style/text_view_in_recycler_item_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="sound: Moo" />
-</LinearLayout>
+        android:layout_margin="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/drug_half_life_unit_list_item"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="140" />
+
+    <TextView
+        android:id="@+id/drug_half_life_unit_list_item"
+        style="@style/text_view_in_recycler_item_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="minutes" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

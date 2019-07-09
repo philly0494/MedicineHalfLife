@@ -27,8 +27,9 @@
     </string-array>
 
     <string-array name="half_life_units">
-        <item>mins</item>
-        <item>hrs</item>
+        <item>minutes</item>
+        <item>hours</item>
+        <item>days</item>
     </string-array>
 
     <string name="action_graph">Graph</string>
@@ -37,5 +38,6 @@
     <string name="webview_height">500</string>
     <string name="webview_width">500</string>
 
+    <string name="action_database_title">Drugs</string>
 
 </resources>

@@ -10,23 +10,19 @@ public class Drug {
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name = DrugClass.DRUG_ID)
-    private String mId;
-
     @ColumnInfo(name = DrugClass.DRUG_NAME)
     public String mName;
 
     @ColumnInfo(name = DrugClass.DRUG_HALF_LIFE)
     public String mHalfLife;
 
-    public Drug(@NonNull String id, String name, String halfLife) {
-        this.mId = id;
+    @ColumnInfo(name = DrugClass.DRUG_HALF_LIFE_UNIT)
+    public String mHalfLifeUnit;
+
+    public Drug(@NonNull String name, String halfLife, String halfLifeUnit) {
         this.mName = name;
         this.mHalfLife = halfLife;
-    }
-
-    public String getId() {
-        return mId;
+        this.mHalfLifeUnit = halfLifeUnit;
     }
 
     public String getName() {
@@ -35,6 +31,9 @@ public class Drug {
 
     public String getHalfLife() {
         return mHalfLife;
+    }
+
+    public String getHalfLifeUnit(){ return mHalfLifeUnit;
     }
 
 }

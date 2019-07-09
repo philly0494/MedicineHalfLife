@@ -5,8 +5,6 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.medicinehalflife.data.Drug;
-
 import java.util.List;
 
 @Dao
@@ -21,7 +19,7 @@ public interface DrugDao {
     @Query("SELECT * FROM drug_list LIMIT 1")
     Drug[] getAnyDrug();
 
-    @Query("SELECT half_life FROM drug_list WHERE name=:drugName")
-    int getHalfLife(String drugName);
+    @Query("SELECT * FROM drug_list WHERE name=:drugName LIMIT 1")
+    Drug getDrugByName(String drugName);
 
 }

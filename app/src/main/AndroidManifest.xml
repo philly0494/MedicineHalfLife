@@ -12,13 +12,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".recycler.RecyclerDatabase"></activity>
+        <activity
+            android:name=".recycler.RecyclerDatabase"
+            android:parentActivityName=".graph.MainActivity"
+            android:theme="@style/AppTheme"
+            android:label="Drugs Database">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".graph.MainActivity" />
+        </activity>
         <activity android:name=".graph.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".add.AddDrugActivity"
+            android:parentActivityName=".recycler.RecyclerDatabase"
+            android:theme="@style/AppTheme"
+            android:label="Add Custom Drug">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".recycler.RecyclerDatabase" />
         </activity>
     </application>
 

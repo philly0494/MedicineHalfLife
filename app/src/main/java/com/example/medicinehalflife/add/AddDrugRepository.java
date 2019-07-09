@@ -1,29 +1,39 @@
-package com.example.medicinehalflife.graph;
+package com.example.medicinehalflife.add;
 
 import android.app.Application;
-
 import android.os.AsyncTask;
-import androidx.lifecycle.LiveData;
 import com.example.medicinehalflife.data.Drug;
 import com.example.medicinehalflife.data.DrugDao;
 import com.example.medicinehalflife.data.DrugRoomDatabase;
 
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class GraphRepository {
+public class AddDrugRepository {
 
     private DrugDao mDrugDao;
-    private LiveData<List<Drug>> mAllDrug;
 
-    GraphRepository(Application application){
+    AddDrugRepository(Application application){
         DrugRoomDatabase db = DrugRoomDatabase.getDatabase(application);
         mDrugDao = db.drugDao();
-        mAllDrug = mDrugDao.getAllDrugs();
     }
 
-    LiveData<List<Drug>> getAllDrugs(){
-        return mAllDrug;
+    void addDrug(Drug drug){
+        new addDrugAsyncTask(mDrugDao).execute(drug);
+    }
+
+    private static class addDrugAsyncTask extends AsyncTask<Drug,Void,Void>{
+
+        private DrugDao mDrugDao;
+
+        addDrugAsyncTask(DrugDao dao){
+            this.mDrugDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Drug... drugs) {
+            mDrugDao.insert(drugs[0]);
+            return null;
+        }
     }
 
     Drug getDrugByName(String drugName){
@@ -50,6 +60,5 @@ public class GraphRepository {
             return mDrugDao.getDrugByName(names[0]);
         }
     }
-
 
 }

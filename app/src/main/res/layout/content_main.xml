@@ -35,7 +35,7 @@
             android:hint="@string/drug_name_hint" />
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/half_life_input_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,26 +49,36 @@
             style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/half_life_label" />
+            android:text="@string/half_life_label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/drug_half_life_edittext"
             style="@style/TextAppearance.AppCompat.Subhead"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:contentDescription="@string/input_for_the_half_life_description"
             android:ems="10"
             android:enabled="false"
-            android:inputType="number" />
+            android:inputType="number"
+            app:layout_constraintBaseline_toBaselineOf="@id/half_life_label"
+            app:layout_constraintEnd_toStartOf="@id/halflife_unit"
+            app:layout_constraintStart_toEndOf="@id/half_life_label" />
 
         <Spinner
             android:id="@+id/halflife_unit"
-            android:layout_width="120dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/spinner_for_choosing_the_half_life_unit_description" />
-    </LinearLayout>
+            android:contentDescription="@string/spinner_for_choosing_the_half_life_unit_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="minutes" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RadioGroup
         android:id="@+id/dosage_radio_group"
@@ -153,10 +163,11 @@
         style="@style/TextAppearance.AppCompat.Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:visibility="gone"
         app:layout_constraintBaseline_toBaselineOf="@id/frequency_edit_text"
         app:layout_constraintStart_toEndOf="@id/frequency_edit_text"
-        tools:text="mins"
+        tools:text="minutes"
         tools:visibility="visible" />
 
     <CheckBox
