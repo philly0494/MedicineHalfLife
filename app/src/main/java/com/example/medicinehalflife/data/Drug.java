@@ -8,9 +8,6 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "drug_list")
 public class Drug {
 
-    @ColumnInfo(name = DrugClass.DRUG_ID)
-    private String mId;
-
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = DrugClass.DRUG_NAME)
@@ -22,15 +19,10 @@ public class Drug {
     @ColumnInfo(name = DrugClass.DRUG_HALF_LIFE_UNIT)
     public String mHalfLifeUnit;
 
-    public Drug(@NonNull String id, String name, String halfLife, String halfLifeUnit) {
-        this.mId = id;
+    public Drug(@NonNull String name, String halfLife, String halfLifeUnit) {
         this.mName = name;
         this.mHalfLife = halfLife;
         this.mHalfLifeUnit = halfLifeUnit;
-    }
-
-    public String getId() {
-        return mId;
     }
 
     public String getName() {

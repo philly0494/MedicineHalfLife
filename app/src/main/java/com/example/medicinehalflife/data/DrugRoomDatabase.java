@@ -69,7 +69,7 @@ public abstract class DrugRoomDatabase extends RoomDatabase {
                 while (i < myDrugs.length()) {
                     try {
                         JSONObject oneDrug = myDrugs.getJSONObject(i);
-                        Drug drug = new Drug(oneDrug.getString(DrugClass.DRUG_ID),
+                        Drug drug = new Drug(
                                 oneDrug.getString(DrugClass.DRUG_NAME),
                                 oneDrug.getString(DrugClass.DRUG_HALF_LIFE),
                                 oneDrug.getString(DrugClass.DRUG_HALF_LIFE_UNIT));

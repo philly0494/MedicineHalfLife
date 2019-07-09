@@ -44,6 +44,10 @@
     <string name="spinner_for_choosing_the_half_life_unit_description">Spinner for choosing the half life unit</string>
     <string name="action_database_title">Drugs</string>
     <string name="custom_drug_text">Custom Drug</string>
+    <string name="add_drug_name_hint">Drug Name</string>
+    <string name="add_drug_save_button">Save</string>
+    <string name="minutes_hours_days_hint">(minutes/hours/days)</string>
+    <string name="half_life_new_drug_hint">Half Life</string>
 
 
 </resources>

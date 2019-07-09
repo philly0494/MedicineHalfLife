@@ -12,13 +12,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".recycler.RecyclerDatabase"></activity>
+        <activity
+            android:name=".recycler.RecyclerDatabase"
+            android:parentActivityName=".graph.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".graph.MainActivity" />
+        </activity>
         <activity android:name=".graph.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".add.AddDrugActivity"
+            android:parentActivityName=".graph.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".graph.MainActivity" />
         </activity>
     </application>
 
