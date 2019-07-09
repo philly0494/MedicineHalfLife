@@ -76,8 +76,11 @@ public class MainActivity extends AppCompatActivity {
         if (drug_name_AutoCompTV != null) {
             drug_name_AutoCompTV.setOnItemClickListener((parent, view, position, id) -> {
                 String drugName = parent.getItemAtPosition(position).toString();
-                int halflife = mGraphViewModel.getHalfLife(drugName);
-                half_life_input.setText(String.format("%s", halflife));
+                Drug drug = mGraphViewModel.getDrugByName(drugName);
+                String halflife = drug.getHalfLife();
+                String halfLifeUnit = drug.getHalfLifeUnit();
+                setSpinText(half_life_unit_spinner,halfLifeUnit);
+                half_life_input.setText(halflife);
             });
         }
 
@@ -234,6 +237,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setSpinText(Spinner spin, String text)
+    {
+        for(int i= 0; i < spin.getAdapter().getCount(); i++)
+        {
+            if(spin.getAdapter().getItem(i).toString().contains(text))
+            {
+                spin.setSelection(i);
+            }
+        }
+
     }
 }
 

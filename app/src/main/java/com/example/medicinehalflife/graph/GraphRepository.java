@@ -26,27 +26,28 @@ public class GraphRepository {
         return mAllDrug;
     }
 
-    int getHalfLife(String drugName){
+    Drug getDrugByName(String drugName){
         try {
-            return new getHalfLifeAsyncTask(mDrugDao).execute(drugName).get();
+            return new getDrugByNameAsyncTask(mDrugDao).execute(drugName).get();
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
-        return 0;
+        return null;
+
     }
 
-    // AsyncTask to delete an animal from the list
-    private static class getHalfLifeAsyncTask extends AsyncTask<String, Void, Integer> {
+    // AsyncTask to get a Drug Object by it's name
+    private static class getDrugByNameAsyncTask extends AsyncTask<String, Void, Drug> {
 
         private DrugDao mDrugDao;
 
-        getHalfLifeAsyncTask(DrugDao dao) {
+        getDrugByNameAsyncTask(DrugDao dao) {
             this.mDrugDao = dao;
         }
 
         @Override
-        protected Integer doInBackground(String... strings) {
-            return mDrugDao.getHalfLife(strings[0]);
+        protected Drug doInBackground(String... names) {
+            return mDrugDao.getDrugByName(names[0]);
         }
     }
 

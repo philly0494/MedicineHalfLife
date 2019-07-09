@@ -22,4 +22,7 @@ public interface DrugDao {
     @Query("SELECT half_life FROM drug_list WHERE name=:drugName")
     int getHalfLife(String drugName);
 
+    @Query("SELECT * FROM drug_list WHERE name=:drugName LIMIT 1")
+    Drug getDrugByName(String drugName);
+
 }
