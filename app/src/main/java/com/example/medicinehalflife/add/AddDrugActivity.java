@@ -44,14 +44,18 @@ public class AddDrugActivity extends AppCompatActivity {
                 unit);
         Drug isDuplicate = mAddDrugViewModel.getDrugByName(name.getText().toString());
 
-        // Don't add the drug if the name already exist
-        if (isDuplicate == null) {
+        // add the drug only if the name (does not) already exist, and the name is not empty
+        boolean shouldAdd = (isDuplicate == null)
+                && (drug.getName().length() > 0)
+                && (drug.getHalfLife().length() > 0);
+
+        if (shouldAdd) {
             mAddDrugViewModel.addDrug(drug);
             Intent intent = new Intent(this, RecyclerDatabase.class);
             Toast.makeText(this, "New Drug Added", Toast.LENGTH_SHORT).show();
             startActivity(intent);
         } else {
-            Toast.makeText(this, "New Drug Name must be Unique", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Invalid entry", Toast.LENGTH_SHORT).show();
         }
     }
 }
