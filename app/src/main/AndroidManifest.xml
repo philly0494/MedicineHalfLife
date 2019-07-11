@@ -38,7 +38,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".recycler.RecyclerDatabase" />
         </activity>
-        <activity android:name=".edit.EditDrugActivity"></activity>
+        <activity
+            android:name=".edit.EditDrugActivity"
+            android:parentActivityName=".recycler.RecyclerDatabase"
+            android:label="Edit Existing Drug"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".recycler.RecyclerDatabase" />
+        </activity>
     </application>
 
 </manifest>
