@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">MedicineHalfLife</string>
-    <string name="drug_name_label">Drug Name:</string>
+    <string name="app_name">MedHalfLife</string>
+    <string name="drug_name_label">Drug:</string>
     <string name="half_life_label">Half-life:</string>
     <string name="graph">Graph</string>
     <string name="custom_drug_textview_label">Custom drug, input Half-life</string>
@@ -37,7 +37,18 @@
 
     <string name="webview_height">500</string>
     <string name="webview_width">500</string>
-
+    <string name="initial_dosage_value">500</string>
+    <string name="drug_name_hint">Search here</string>
+    <string name="drug_search_description">Search for drug names here:</string>
+    <string name="input_for_the_half_life_description">Input for the Half Life</string>
+    <string name="spinner_for_choosing_the_half_life_unit_description">Spinner for choosing the half life unit</string>
     <string name="action_database_title">Drug List</string>
+    <string name="custom_drug_text">Custom Drug</string>
+    <string name="add_drug_name_hint">Drug Name</string>
+    <string name="add_drug_save_button">Save</string>
+    <string name="minutes_hours_days_hint">(minutes/hours/days)</string>
+    <string name="half_life_new_drug_hint">Half-life</string>
+    <string name="edit_drug_save_button">Save</string>
+
 
 </resources>

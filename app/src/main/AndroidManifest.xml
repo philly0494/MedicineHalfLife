@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".recycler.RecyclerDatabase"
-            android:label="Drugs Database"
+            android:label="Drugs"
             android:parentActivityName=".graph.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
@@ -31,7 +31,7 @@
         </activity>
         <activity
             android:name=".add.AddDrugActivity"
-            android:label="Add Custom Drug"
+            android:label="Add Drug"
             android:parentActivityName=".recycler.RecyclerDatabase"
             android:theme="@style/AppTheme">
             <meta-data
@@ -41,7 +41,7 @@
         <activity
             android:name=".edit.EditDrugActivity"
             android:parentActivityName=".recycler.RecyclerDatabase"
-            android:label="Edit Existing Drug"
+            android:label="Edit Drug"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

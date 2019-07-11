@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="4dp"
-    android:elevation="16dp">
+    android:elevation="16dp"
+    app:cardCornerRadius="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,12 +18,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/dosage_label_textview"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/dosage_label_textview">
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <RadioButton
                 android:id="@+id/single_dose_radio"
@@ -44,7 +44,7 @@
             style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:text="@string/dosage_textview_label"
             app:layout_constraintBottom_toTopOf="@id/every_label"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -55,13 +55,13 @@
             android:id="@+id/dosage_edittext"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:inputType="number"
-            android:paddingEnd="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
             android:paddingStart="16dp"
+            android:paddingLeft="16dp"
+            android:paddingEnd="16dp"
+            android:paddingRight="16dp"
             android:text="@string/initial_dosage_value"
             app:layout_constraintBaseline_toBaselineOf="@id/dosage_label_textview"
             app:layout_constraintEnd_toStartOf="@id/dosage_unit_spinner"
@@ -71,6 +71,7 @@
             android:id="@+id/dosage_unit_spinner"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/every_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/dosage_edittext"
             app:layout_constraintTop_toBottomOf="@id/dosage_radio_group" />
@@ -83,7 +84,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/every_label"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/custom_halflife_checkbox"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dosage_label_textview"
             tools:visibility="visible" />
@@ -93,10 +94,10 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:paddingEnd="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
             android:paddingStart="16dp"
+            android:paddingLeft="16dp"
+            android:paddingEnd="16dp"
+            android:paddingRight="16dp"
             android:visibility="gone"
             app:layout_constraintBaseline_toBaselineOf="@id/every_label"
             app:layout_constraintEnd_toStartOf="@id/frequency_unit_label"
