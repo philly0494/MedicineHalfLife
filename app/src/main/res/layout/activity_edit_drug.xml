@@ -6,13 +6,14 @@
     android:background="@color/colorScreenBackground"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".add.AddDrugActivity">
+    tools:context=".edit.EditDrugActivity">
 
     <EditText
-        android:id="@+id/add_drug_name_edit_text"
+        android:id="@+id/edit_drug_name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/add_drug_name_hint"
+        android:enabled="false"
         android:inputType="textCapWords" />
 
     <LinearLayout
@@ -21,7 +22,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/add_drug_half_life_edit_text"
+            android:id="@+id/edit_drug_half_life_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -29,7 +30,7 @@
             android:inputType="number" />
 
         <Spinner
-            android:id="@+id/add_drug_half_life_unit_spinner"
+            android:id="@+id/edit_drug_half_life_unit_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -38,10 +39,10 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/new_drug_save"
+        android:id="@+id/edit_drug_save"
         style="@style/add_drug_save_button"
         android:layout_marginTop="8dp"
-        android:onClick="saveNewDrug"
-        android:text="@string/add_drug_save_button" />
+        android:onClick="saveEditDrug"
+        android:text="@string/edit_drug_save_button" />
 
 </LinearLayout>

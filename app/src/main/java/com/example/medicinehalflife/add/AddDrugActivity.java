@@ -1,13 +1,12 @@
 package com.example.medicinehalflife.add;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,14 +43,23 @@ public class AddDrugActivity extends AppCompatActivity {
                 unit);
         Drug isDuplicate = mAddDrugViewModel.getDrugByName(name.getText().toString());
 
-        // Don't add the drug if the name already exist
-        if (isDuplicate == null) {
+        // add the drug only if the name (does not) already exist, and the name is not empty
+        boolean shouldAdd = (isDuplicate == null)
+                && (drug.getName().length() > 0)
+                && (drug.getHalfLife().length() > 0);
+
+        if (shouldAdd) {
             mAddDrugViewModel.addDrug(drug);
             Intent intent = new Intent(this, RecyclerDatabase.class);
-            Toast.makeText(this, "New Drug Added", Toast.LENGTH_SHORT).show();
+            showToast(this, "New Drug Added");
             startActivity(intent);
         } else {
-            Toast.makeText(this, "New Drug Name must be Unique", Toast.LENGTH_SHORT).show();
+            showToast(this, "Invalid entry");
         }
     }
+
+    private void showToast(Context context, String text) {
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+    }
+
 }

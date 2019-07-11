@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">MedicineHalfLife</string>
     <string name="drug_name_label">Drug Name:</string>
-    <string name="half_life_label">Half Life:</string>
+    <string name="half_life_label">Half-life:</string>
     <string name="graph">Graph</string>
-    <string name="custom_drug_textview_label">Custom drug, input Half-Life</string>
+    <string name="custom_drug_textview_label">Custom drug, input Half-life</string>
     <string name="repeated_dose">Repeated Dose</string>
     <string name="single_dose">Single Dose</string>
     <string name="dosage_textview_label">Dosage:</string>
@@ -38,6 +38,6 @@
     <string name="webview_height">500</string>
     <string name="webview_width">500</string>
 
-    <string name="action_database_title">Drugs</string>
+    <string name="action_database_title">Drug List</string>
 
 </resources>

@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 Drug drug = mGraphViewModel.getDrugByName(drugName);
                 String halflife = drug.getHalfLife();
                 String halfLifeUnit = drug.getHalfLifeUnit();
-                setSpinText(half_life_unit_spinner,halfLifeUnit);
+                setSpinText(half_life_unit_spinner, halfLifeUnit);
                 half_life_input.setText(halflife);
             });
         }
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
         // if the custom drug box is NOT checked, then disable the spinner for half life unit, since we are not changing it
         // the custom half life input box is set to (not enabled) in the xml. it is not possible to do that with a spinner
-        if (!checkBox.isChecked()){
+        if (!checkBox.isChecked()) {
             half_life_unit_spinner.setEnabled(false);
         }
 
@@ -146,7 +146,9 @@ public class MainActivity extends AppCompatActivity {
             drug_name_AutoCompTV.setEnabled(!isChecked);
 
             //Clear the auto complete text view when you uncheck this
-            if (!isChecked){drug_name_AutoCompTV.setText("");}
+            if (!isChecked) {
+                drug_name_AutoCompTV.setText("");
+            }
 
         });
 
@@ -203,13 +205,13 @@ public class MainActivity extends AppCompatActivity {
                     .show();
         }
 
-       // Gets input manager from android's system services
-       InputMethodManager inputManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-       // Hides the keyboard, but do not override "force keyboard" flags
-       if (inputManager != null) {
-           inputManager.hideSoftInputFromWindow(findViewById(R.id.action_graph).getWindowToken(),
-                   InputMethodManager.HIDE_NOT_ALWAYS);
-       }
+        // Gets input manager from android's system services
+        InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        // Hides the keyboard, but do not override "force keyboard" flags
+        if (inputManager != null) {
+            inputManager.hideSoftInputFromWindow(findViewById(R.id.action_graph).getWindowToken(),
+                    InputMethodManager.HIDE_NOT_ALWAYS);
+        }
     }
 
     @Override
@@ -252,16 +254,12 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void setSpinText(Spinner spin, String text)
-    {
-        for(int i= 0; i < spin.getAdapter().getCount(); i++)
-        {
-            if(spin.getAdapter().getItem(i).toString().contains(text))
-            {
+    void setSpinText(Spinner spin, String text) {
+        for (int i = 0; i < spin.getAdapter().getCount(); i++) {
+            if (spin.getAdapter().getItem(i).toString().contains(text)) {
                 spin.setSelection(i);
             }
         }
-
     }
 }
 
