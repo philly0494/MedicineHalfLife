@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_main">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <!-- Grouping & Set focusable for visually impaired users -->
     <LinearLayout
@@ -32,6 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:paddingStart="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingEnd="16dp"
             android:hint="@string/drug_name_hint" />
     </LinearLayout>
 
@@ -63,6 +66,10 @@
             android:layout_marginLeft="8dp"
             android:contentDescription="@string/input_for_the_half_life_description"
             android:ems="10"
+            android:paddingStart="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingEnd="16dp"
             android:enabled="false"
             android:inputType="number"
             app:layout_constraintBaseline_toBaselineOf="@id/half_life_label"
@@ -121,6 +128,10 @@
         android:layout_marginLeft="8dp"
         android:inputType="number"
         android:text="@string/initial_dosage_value"
+        android:paddingStart="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
         app:layout_constraintBaseline_toBaselineOf="@id/dosage_label_textview"
         app:layout_constraintEnd_toStartOf="@id/dosage_unit_spinner"
         app:layout_constraintStart_toEndOf="@id/dosage_label_textview" />
@@ -156,6 +167,10 @@
         app:layout_constraintEnd_toStartOf="@id/frequency_unit_label"
         app:layout_constraintStart_toEndOf="@id/every_label"
         tools:text="120"
+        android:paddingStart="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
         tools:visibility="visible" />
 
     <TextView
