@@ -14,9 +14,9 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".recycler.RecyclerDatabase"
+            android:label="Drugs Database"
             android:parentActivityName=".graph.MainActivity"
-            android:theme="@style/AppTheme"
-            android:label="Drugs Database">
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".graph.MainActivity" />
@@ -31,13 +31,14 @@
         </activity>
         <activity
             android:name=".add.AddDrugActivity"
+            android:label="Add Custom Drug"
             android:parentActivityName=".recycler.RecyclerDatabase"
-            android:theme="@style/AppTheme"
-            android:label="Add Custom Drug">
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".recycler.RecyclerDatabase" />
         </activity>
+        <activity android:name=".edit.EditDrugActivity"></activity>
     </application>
 
 </manifest>
