@@ -16,7 +16,8 @@ import com.example.medicinehalflife.recycler.RecyclerDatabase;
 
 public class EditDrugActivity extends AppCompatActivity {
 
-    EditText editDrugName;
+    private EditText editDrugName;
+    private EditText editDrugHalfLife;
     private Spinner edit_drug_unit_spinner;
     private EditDrugViewModel mEditDrugViewModel;
 
@@ -27,14 +28,19 @@ public class EditDrugActivity extends AppCompatActivity {
         mEditDrugViewModel = ViewModelProviders.of(this).get(EditDrugViewModel.class);
         Intent intent = getIntent();
         String drugName = intent.getStringExtra(RecyclerDatabase.EDIT_DRUG_NAME);
+        String drugHalfLife = intent.getStringExtra(RecyclerDatabase.EDIT_DRUG_HALFLIFE);
+        String drugHalfLifeUnit = intent.getStringExtra(RecyclerDatabase.EDIT_DRUG_HALFLIFE_UNIT);
         editDrugName = findViewById(R.id.edit_drug_name_edit_text);
         editDrugName.setText(drugName);
+        editDrugHalfLife = findViewById(R.id.edit_drug_half_life_edit_text);
+        editDrugHalfLife.setText(drugHalfLife);
 
         edit_drug_unit_spinner = findViewById(R.id.edit_drug_half_life_unit_spinner);
         ArrayAdapter<CharSequence> half_life_unit_adapter = ArrayAdapter.createFromResource(
                 this, R.array.half_life_units, android.R.layout.simple_spinner_item);
         half_life_unit_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         edit_drug_unit_spinner.setAdapter(half_life_unit_adapter);
+        setSpinText(edit_drug_unit_spinner,drugHalfLifeUnit);
     }
 
     public void saveEditDrug(View view) {
@@ -56,6 +62,14 @@ public class EditDrugActivity extends AppCompatActivity {
 
     private void showToast(Context context, String text) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+    }
+
+    void setSpinText(Spinner spin, String text) {
+        for (int i = 0; i < spin.getAdapter().getCount(); i++) {
+            if (spin.getAdapter().getItem(i).toString().contains(text)) {
+                spin.setSelection(i);
+            }
+        }
     }
 
 }

@@ -23,6 +23,8 @@ import java.util.List;
 public class RecyclerDatabase extends AppCompatActivity {
 
     public static final String EDIT_DRUG_NAME = "drug";
+    public static final String EDIT_DRUG_HALFLIFE = "halflife";
+    public static final String EDIT_DRUG_HALFLIFE_UNIT = "unit";
 
     private RecyclerViewModel mRecyclerViewModel;
 
@@ -74,6 +76,8 @@ public class RecyclerDatabase extends AppCompatActivity {
                 Intent intent = new Intent(this, EditDrugActivity.class);
                 final Drug drug = adapter.getDrugAtPosition(adapterPosition);
                 intent.putExtra(EDIT_DRUG_NAME,drug.getName());
+                intent.putExtra(EDIT_DRUG_HALFLIFE,drug.getHalfLife());
+                intent.putExtra(EDIT_DRUG_HALFLIFE_UNIT,drug.getHalfLifeUnit());
                 startActivity(intent);
             }
         });
