@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="8dp"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    <!--     tools:showIn="@layout/activity_main"  -->
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main">
 
     <include
         android:id="@+id/name_card"
