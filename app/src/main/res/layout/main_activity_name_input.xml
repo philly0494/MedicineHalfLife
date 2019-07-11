@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="4dp"
-    android:elevation="10dp">
+    android:elevation="16dp">
 
     <!-- Grouping & Set focusable for visually impaired users -->
     <LinearLayout
