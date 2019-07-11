@@ -1,5 +1,6 @@
 package com.example.medicinehalflife.add;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -52,10 +53,15 @@ public class AddDrugActivity extends AppCompatActivity {
         if (shouldAdd) {
             mAddDrugViewModel.addDrug(drug);
             Intent intent = new Intent(this, RecyclerDatabase.class);
-            Toast.makeText(this, "New Drug Added", Toast.LENGTH_SHORT).show();
+            showToast(this, "New Drug Added");
             startActivity(intent);
         } else {
-            Toast.makeText(this, "Invalid entry", Toast.LENGTH_SHORT).show();
+            showToast(this, "Invalid entry");
         }
     }
+
+    void showToast(Context context, String text) {
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+    }
+
 }

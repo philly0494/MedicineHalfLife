@@ -99,6 +99,7 @@ public abstract class DrugRoomDatabase extends RoomDatabase {
             stream.close();
             tContents = new String(buffer);
         } catch (IOException e) {
+            e.printStackTrace();
         }
 
         try {
