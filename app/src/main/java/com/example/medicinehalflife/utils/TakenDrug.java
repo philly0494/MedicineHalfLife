@@ -43,9 +43,9 @@ public class TakenDrug {
         //these buckets are arbitrary, but very easy to adjust
         switch(this.hlUnit)
         {
-            case "mins":
+            case "minutes":
                 return 60*24;
-            case "hrs":
+            case "hours":
                 if (this.hlValue < 10)
                     return 24;
                 else
