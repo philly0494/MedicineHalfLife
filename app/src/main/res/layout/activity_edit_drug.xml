@@ -6,7 +6,7 @@
     android:background="@color/colorScreenBackground"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".edit.EditDrugActivity">
+    tools:context="com.danapplabs.medicinehalflife.edit.EditDrugActivity">
 
     <EditText
         android:id="@+id/edit_drug_name_edit_text"

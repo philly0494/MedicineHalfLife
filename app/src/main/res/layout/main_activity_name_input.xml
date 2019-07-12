@@ -7,11 +7,13 @@
     app:cardCornerRadius="4dp">
 
     <!-- Grouping & Set focusable for visually impaired users -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/drug_search_description"
         android:focusable="true"
         android:orientation="horizontal">
@@ -21,18 +23,26 @@
             style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/drug_name_label" />
+            android:text="@string/drug_name_label"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/drug_name_AutoCompTV"/>
 
         <AutoCompleteTextView
             android:id="@+id/drug_name_AutoCompTV"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:hint="@string/drug_name_hint"
+            app:layout_constraintBaseline_toBaselineOf="@id/drug_name_label"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/drug_name_label"
+            app:layout_constraintEnd_toEndOf="parent"
             android:paddingStart="16dp"
             android:paddingLeft="16dp"
             android:paddingEnd="16dp"
             android:paddingRight="16dp" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
