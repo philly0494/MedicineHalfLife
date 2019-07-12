@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.medicinehalflife">
+    package="com.danapplabs.medicinehalflife">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,15 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".recycler.RecyclerDatabase"
+            android:name="com.danapplabs.medicinehalflife.recycler.RecyclerDatabase"
             android:label="Drugs"
-            android:parentActivityName=".graph.MainActivity"
+            android:parentActivityName="com.danapplabs.medicinehalflife.graph.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".graph.MainActivity" />
+                android:value="com.danapplabs.medicinehalflife.graph.MainActivity" />
         </activity>
-        <activity android:name=".graph.MainActivity">
+        <activity android:name="com.danapplabs.medicinehalflife.graph.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -30,22 +30,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".add.AddDrugActivity"
+            android:name="com.danapplabs.medicinehalflife.add.AddDrugActivity"
             android:label="Add Drug"
-            android:parentActivityName=".recycler.RecyclerDatabase"
+            android:parentActivityName="com.danapplabs.medicinehalflife.recycler.RecyclerDatabase"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".recycler.RecyclerDatabase" />
+                android:value="com.danapplabs.medicinehalflife.recycler.RecyclerDatabase" />
         </activity>
         <activity
-            android:name=".edit.EditDrugActivity"
-            android:parentActivityName=".recycler.RecyclerDatabase"
+            android:name="com.danapplabs.medicinehalflife.edit.EditDrugActivity"
+            android:parentActivityName="com.danapplabs.medicinehalflife.recycler.RecyclerDatabase"
             android:label="Edit Drug"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".recycler.RecyclerDatabase" />
+                android:value="com.danapplabs.medicinehalflife.recycler.RecyclerDatabase" />
         </activity>
     </application>
 

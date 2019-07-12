@@ -34,6 +34,7 @@
 
     <string name="action_graph">Graph</string>
     <string name="action_settings">Settings</string>
+    <string name="action_database_title">Drugs</string>
 
     <string name="webview_height">500</string>
     <string name="webview_width">500</string>
@@ -42,7 +43,6 @@
     <string name="drug_search_description">Search for drug names here:</string>
     <string name="input_for_the_half_life_description">Input for the Half Life</string>
     <string name="spinner_for_choosing_the_half_life_unit_description">Spinner for choosing the half life unit</string>
-    <string name="action_database_title">Drug List</string>
     <string name="custom_drug_text">Custom Drug</string>
     <string name="add_drug_name_hint">Drug Name</string>
     <string name="add_drug_save_button">Save</string>
